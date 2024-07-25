@@ -1,5 +1,7 @@
- I didn't write particularly thorough tests, though I tried to make some assumptions where possible about mismatched data, though I have no idea what problem 2 should do if the notCombinableWith lists aren't mutual.
+ I didn't write particularly thorough tests, though I tried to make some assumptions where possible about mismatched data. I have no idea what problem 2 should do if the notCombinableWith lists aren't mutual.
 
 I ended up having a bit of extra fun with problem 2 once I realized halfway through writing the recursion that it's really a graph problem about finding fully connected sub-graphs and that there's probably a standard solution out there.
 
 A quick google search later and I've discovered that this is called the clique problem, which is NP-hard and there is an algorithm called Bron-Kerbosch that's considered optimal for most use-cases. I implemented the naive version algorithm as described on wikipedia in scala, made it slightly more functional-style, and wrote some very naive performance measurement code to discover to my surprise that it's slightly slower than my other algorithm. Off-the-shelf implementations were even more surprisingly orders of magnitude worse. As soon as I added almost any new edges or vertices to the sample problem though, Bron-Kerbosch started to quickly become much faster than my algorithm, which is what I expected because of how many duplicate combos my algorithm finds (it should be almost all permutations of each of the output combos, unfortunately).
+
+This deserves far more tests than I gave it, but the algorithm is fairly simple and I think what I have here it sufficient to believe I implemented it correctly enough for this use-case.
